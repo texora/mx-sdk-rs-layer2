@@ -1,0 +1,21 @@
+[package]
+name = "erc1155-marketplace"
+version = "0.0.0"
+authors = ["Dorin Iancu <dorin.iancu@dharitri.com>"]
+edition = "2021"
+publish = false
+
+[lib]
+path = "src/lib.rs"
+
+
+[dependencies.erc1155]
+path = "../erc1155"
+
+[dependencies.dharitri-wasm]
+version = "0.10.8"
+path = "../../../../dharitri-wasm"
+
+[dev-dependencies.dharitri-wasm-debug]
+version = "0.10.8"
+path = "../../../../dharitri-wasm-debug"

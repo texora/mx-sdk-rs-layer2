@@ -1,0 +1,21 @@
+[package]
+name = "queue-repeat"
+version = "0.0.0"
+authors = ["Claudiu-Marcel Bruda <claudiu.bruda@dharitri.com>"]
+edition = "2021"
+publish = false
+
+[lib]
+path = "src/queue_repeat.rs"
+
+[dependencies.benchmark-common]
+path = "../benchmark-common"
+
+
+[dependencies.dharitri-wasm]
+version = "0.10.8"
+path = "../../../../dharitri-wasm"
+
+[dev-dependencies.dharitri-wasm-debug]
+version = "0.10.8"
+path = "../../../../dharitri-wasm-debug"

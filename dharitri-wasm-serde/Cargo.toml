@@ -1,0 +1,21 @@
+[package]
+name = "dharitri-wasm-serde"
+version = "0.0.3"
+edition = "2021"
+
+authors = ["Andrei Marinica <andrei.marinica@dharitri.com>", "Dharitri Network <contact@dharitri.com>"]
+license = "GPL-3.0-only"
+readme = "README.md"
+repository = "https://github.com/Battula-anil-app-could/dx-sdk-rs-new"
+homepage = "https://dharitri.com/"
+documentation = "https://docs.dharitri.com/"
+description = "Dharitri WebAssembly Serde serializer"
+keywords = ["dharitri", "wasm", "webassembly", "blockchain", "contract"]
+categories = ["no-std", "wasm", "cryptography::cryptocurrencies", "development-tools::ffi"]
+
+[dependencies]
+wee_alloc = "0.4"
+serde = { version = "1.0", default-features = false, features = ["alloc", "derive"] }
+
+[workspace]
+members = ["."]

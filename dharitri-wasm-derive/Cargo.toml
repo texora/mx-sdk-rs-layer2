@@ -1,0 +1,28 @@
+[package]
+name = "dharitri-wasm-derive"
+version = "0.10.8"
+edition = "2021"
+
+authors = ["Andrei Marinica <andrei.marinica@dharitri.com>", "Dharitri Network <contact@dharitri.com>"]
+license = "GPL-3.0-only"
+readme = "README.md"
+repository = "https://github.com/Battula-anil-app-could/dx-sdk-rs-new"
+homepage = "https://dharitri.com/"
+documentation = "https://docs.dharitri.com/"
+description = "Dharitri WebAssembly smart contract API procedural macros"
+keywords = ["dharitri", "blockchain", "contract"]
+categories = ["cryptography::cryptocurrencies", "development-tools::procedural-macro-helpers"]
+
+[dependencies]
+proc-macro2 = "1.0"
+quote = "1.0"
+syn = "1.0"
+hex = "0.4"
+radix_trie = "0.1"
+
+[features]
+default = ["syn/full", "syn/parsing", "syn/extra-traits"]
+
+[lib]
+name = "dharitri_wasm_derive"
+proc-macro = true

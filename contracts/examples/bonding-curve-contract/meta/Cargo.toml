@@ -1,0 +1,13 @@
+[package]
+name = "bonding-curve-contract-meta"
+version = "0.0.0"
+authors = ["Alin Cruceat <alin.cruceat@dharitri.com>"]
+edition = "2021"
+publish = false
+
+[dependencies.bonding-curve-contract]
+path = ".."
+
+[dependencies.dharitri-wasm-debug]
+version = "0.10.8"
+path = "../../../../dharitri-wasm-debug"

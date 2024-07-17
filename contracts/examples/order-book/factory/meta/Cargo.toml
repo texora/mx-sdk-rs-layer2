@@ -1,0 +1,13 @@
+[package]
+name = "factory-meta"
+version = "0.0.0"
+authors = ["you"]
+edition = "2021"
+publish = false
+
+[dependencies.order-book-factory]
+path = ".."
+
+[dependencies.dharitri-wasm-debug]
+version = "0.10.8"
+path = "../../../../../dharitri-wasm-debug"

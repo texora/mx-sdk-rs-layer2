@@ -1,0 +1,24 @@
+[package]
+name = "transfer-role-features"
+version = "0.0.0"
+authors = ["Dorin Marian Iancu <dorin.iancu@dharitri.com>"]
+edition = "2021"
+publish = false
+
+[lib]
+path = "src/lib.rs"
+
+[dev-dependencies.vault]
+path = "../vault"
+
+[dependencies.dharitri-wasm]
+version = "0.10.8"
+path = "../../../../dharitri-wasm"
+
+[dependencies.dharitri-wasm-modules]
+version = "0.10.8"
+path = "../../../../dharitri-wasm-modules"
+
+[dev-dependencies.dharitri-wasm-debug]
+version = "0.10.8"
+path = "../../../../dharitri-wasm-debug"

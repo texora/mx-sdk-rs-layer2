@@ -1,0 +1,187 @@
+{
+    "name": "load local dct roles",
+    "gasSchedule": "dummy",
+    "steps": [
+        {
+            "step": "setState",
+            "accounts": {
+                "sc:forwarder": {
+                    "nonce": "0",
+                    "balance": "0",
+                    "dct": {
+                        "str:DCT-123456": "200"
+                    },
+                    "code": "file:../forwarder/output/forwarder.wasm"
+                },
+                "address:viewer": {
+                    "nonce": "0",
+                    "balance": "0"
+                }
+            }
+        },
+        {
+            "step": "scCall",
+            "id": "0",
+            "comment": "no roles",
+            "tx": {
+                "from": "address:viewer",
+                "to": "sc:forwarder",
+                "function": "get_dct_local_roles",
+                "arguments": [
+                    "str:DCT-123456"
+                ],
+                "gasLimit": "50,000,000",
+                "gasPrice": "0"
+            },
+            "expect": {
+                "out": [],
+                "status": "0",
+                "message": "",
+                "gas": "*",
+                "refund": "*"
+            }
+        },
+        {
+            "step": "setState",
+            "accounts": {
+                "sc:forwarder": {
+                    "nonce": "0",
+                    "balance": "0",
+                    "dct": {
+                        "str:DCT-123456": {
+                            "roles": [
+                                "DCTRoleLocalMint"
+                            ]
+                        }
+                    },
+                    "code": "file:../forwarder/output/forwarder.wasm"
+                },
+                "address:viewer": {
+                    "nonce": "0",
+                    "balance": "0"
+                }
+            }
+        },
+        {
+            "step": "scCall",
+            "id": "1",
+            "comment": "one role",
+            "tx": {
+                "from": "address:viewer",
+                "to": "sc:forwarder",
+                "function": "get_dct_local_roles",
+                "arguments": [
+                    "str:DCT-123456"
+                ],
+                "gasLimit": "50,000,000",
+                "gasPrice": "0"
+            },
+            "expect": {
+                "out": [
+                    "str:DCTRoleLocalMint"
+                ],
+                "status": "0",
+                "message": "",
+                "gas": "*",
+                "refund": "*"
+            }
+        },
+        {
+            "step": "setState",
+            "accounts": {
+                "sc:forwarder": {
+                    "nonce": "0",
+                    "balance": "0",
+                    "dct": {
+                        "str:DCT-123456": {
+                            "roles": [
+                                "DCTRoleLocalMint",
+                                "DCTRoleLocalBurn"
+                            ]
+                        }
+                    },
+                    "code": "file:../forwarder/output/forwarder.wasm"
+                },
+                "address:viewer": {
+                    "nonce": "0",
+                    "balance": "0"
+                }
+            }
+        },
+        {
+            "step": "scCall",
+            "id": "2",
+            "comment": "multiple roles",
+            "tx": {
+                "from": "address:viewer",
+                "to": "sc:forwarder",
+                "function": "get_dct_local_roles",
+                "arguments": [
+                    "str:DCT-123456"
+                ],
+                "gasLimit": "50,000,000",
+                "gasPrice": "0"
+            },
+            "expect": {
+                "out": [
+                    "str:DCTRoleLocalMint",
+                    "str:DCTRoleLocalBurn"
+                ],
+                "status": "0",
+                "message": "",
+                "gas": "*",
+                "refund": "*"
+            }
+        },
+        {
+            "step": "setState",
+            "accounts": {
+                "sc:forwarder": {
+                    "nonce": "0",
+                    "balance": "0",
+                    "dct": {
+                        "str:DCT-123456": {
+                            "lastNonce": "5",
+                            "roles": [
+                                "DCTRoleNFTCreate",
+                                "DCTRoleNFTAddQuantity",
+                                "DCTRoleNFTBurn"
+                            ]
+                        }
+                    },
+                    "code": "file:../forwarder/output/forwarder.wasm"
+                },
+                "address:viewer": {
+                    "nonce": "0",
+                    "balance": "0"
+                }
+            }
+        },
+        {
+            "step": "scCall",
+            "id": "3",
+            "comment": "nft roles",
+            "tx": {
+                "from": "address:viewer",
+                "to": "sc:forwarder",
+                "function": "get_dct_local_roles",
+                "arguments": [
+                    "str:DCT-123456"
+                ],
+                "gasLimit": "50,000,000",
+                "gasPrice": "0"
+            },
+            "expect": {
+                "out": [
+                    "str:DCTRoleNFTCreate",
+                    "str:DCTRoleNFTAddQuantity",
+                    "str:DCTRoleNFTBurn"
+                ],
+                "status": "0",
+                "message": "",
+                "gas": "*",
+                "refund": "*"
+            }
+        }
+    ]
+}

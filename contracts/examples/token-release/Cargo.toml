@@ -1,0 +1,18 @@
+[package]
+name = "token-release"
+version = "0.0.1"
+authors = [ "you",]
+edition = "2021"
+publish = false
+
+[lib]
+path = "src/token_release.rs"
+
+[dependencies.dharitri-wasm]
+version = "0.10.8"
+path = "../../../dharitri-wasm"
+
+[dev-dependencies.dharitri-wasm-debug]
+version = "0.10.8"
+path = "../../../dharitri-wasm-debug"
+

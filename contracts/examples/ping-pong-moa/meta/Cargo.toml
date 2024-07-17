@@ -1,0 +1,13 @@
+[package]
+name = "ping-pong-moa-meta"
+version = "0.0.0"
+authors = [ "Bruda Claudiu-Marcel <claudiu725@yahoo.com>",]
+edition = "2021"
+publish = false
+
+[dependencies.ping-pong-moa]
+path = ".."
+
+[dependencies.dharitri-wasm-debug]
+version = "0.10.8"
+path = "../../../../dharitri-wasm-debug"

@@ -1,0 +1,25 @@
+[package]
+name = "forwarder-raw"
+version = "0.0.0"
+authors = ["Andrei Marinica <andrei.marinica@dharitri.com>"]
+edition = "2021"
+publish = false
+
+[lib]
+path = "src/forwarder_raw.rs"
+
+[features]
+ei-unmanaged = ["dharitri-wasm/ei-unmanaged"]
+
+[dependencies.dharitri-wasm]
+version = "0.10.8"
+path = "../../../../dharitri-wasm"
+
+[dependencies.dharitri-wasm-node]
+version = "0.10.8"
+path = "../../../../dharitri-wasm-node"
+optional = true
+
+[dev-dependencies.dharitri-wasm-debug]
+version = "0.10.8"
+path = "../../../../dharitri-wasm-debug"

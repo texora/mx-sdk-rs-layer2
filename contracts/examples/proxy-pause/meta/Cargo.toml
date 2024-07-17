@@ -1,0 +1,15 @@
+[package]
+name = "proxy-pause-meta"
+version = "0.0.0"
+edition = "2021"
+publish = false
+authors = [ "you",]
+
+[dev-dependencies]
+
+[dependencies.proxy-pause]
+path = ".."
+
+[dependencies.dharitri-wasm-debug]
+version = "0.10.8"
+path = "../../../../dharitri-wasm-debug"

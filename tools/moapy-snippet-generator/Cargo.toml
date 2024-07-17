@@ -1,0 +1,23 @@
+[package]
+name = "moapy-snippet-generator"
+version = "0.0.0"
+authors = ["Dorin Marian Iancu <dorin.iancu@dharitri.com>"]
+edition = "2021"
+
+[[bin]]
+name = "moapy-snippet-generator"
+path = "src/moapy_snippet_generator.rs"
+
+[dependencies.dharitri-wasm]
+version = "0.10.8"
+path = "../../dharitri-wasm"
+
+[dependencies.dharitri-wasm-debug]
+version = "0.10.8"
+path = "../../dharitri-wasm-debug"
+
+[dependencies]
+bech32 = "0.8.1"
+num-bigint = "0.4.2"
+num-traits = "0.2"
+hex = "0.4"

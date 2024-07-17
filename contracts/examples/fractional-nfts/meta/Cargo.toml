@@ -1,0 +1,13 @@
+[package]
+name = "fractional-nfts-meta"
+version = "0.0.0"
+authors = ["Claudiu-Marcel Bruda <claudiu.bruda@dharitri.com>"]
+edition = "2021"
+publish = false
+
+[dependencies.fractional-nfts]
+path = ".."
+
+[dependencies.dharitri-wasm-debug]
+version = "0.10.8"
+path = "../../../../dharitri-wasm-debug"

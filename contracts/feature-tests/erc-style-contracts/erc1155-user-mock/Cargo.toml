@@ -1,0 +1,19 @@
+[package]
+name = "erc1155-user-mock"
+version = "0.0.0"
+authors = ["Dorin Iancu <dorin.iancu@dharitri.com>"]
+edition = "2021"
+publish = false
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies.dharitri-wasm]
+version = "0.10.8"
+path = "../../../../dharitri-wasm"
+features = ["alloc"]
+
+[dev-dependencies.dharitri-wasm-debug]
+version = "0.10.8"
+path = "../../../../dharitri-wasm-debug"
+

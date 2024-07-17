@@ -1,0 +1,11 @@
+[package]
+name = "test-gen"
+version = "0.0.0"
+authors = ["Andrei Marinica <andrei.marinica@dharitri.com>"]
+edition = "2021"
+
+[[bin]]
+name = "test-gen"
+path = "src/test_gen.rs"
+
+[dependencies]

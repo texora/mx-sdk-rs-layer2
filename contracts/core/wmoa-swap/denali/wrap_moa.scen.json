@@ -1,0 +1,94 @@
+{
+    "name": "wrap moa",
+    "gasSchedule": "v4",
+    "steps": [
+        {
+            "step": "setState",
+            "accounts": {
+                "address:user": {
+                    "nonce": "0",
+                    "balance": "1000"
+                },
+                "sc:moa_dct_swap": {
+                    "nonce": "0",
+                    "balance": "0",
+                    "dct": {
+                        "str:MOA-abcdef": {
+                            "instances": [
+                                {
+                                    "nonce": "",
+                                    "balance": "1"
+                                }
+                            ],
+                            "roles": [
+                                "DCTRoleLocalMint",
+                                "DCTRoleLocalBurn"
+                            ]
+                        }
+                    },
+                    "storage": {
+                        "str:wrappedMoaTokenId": "str:MOA-abcdef"
+                    },
+                    "code": "file:../output/dharitri-sc-wmoa-swap.wasm"
+                }
+            }
+        },
+        {
+            "step": "scCall",
+            "id": "wrap-moa",
+            "tx": {
+                "from": "address:user",
+                "to": "sc:moa_dct_swap",
+                "moaValue": "500",
+                "function": "wrapMoa",
+                "arguments": [],
+                "gasLimit": "5,000,000",
+                "gasPrice": "0"
+            },
+            "expect": {
+                "out": [
+                    "nested:str:MOA-abcdef|u64:0|biguint:500"
+                ],
+                "status": "0",
+                "message": "",
+                "gas": "*",
+                "refund": "*"
+            }
+        },
+        {
+            "step": "checkState",
+            "accounts": {
+                "address:user": {
+                    "nonce": "1",
+                    "balance": "500",
+                    "dct": {
+                        "str:MOA-abcdef": "500"
+                    },
+                    "storage": {}
+                },
+                "sc:moa_dct_swap": {
+                    "nonce": "0",
+                    "balance": "500",
+                    "dct": {
+                        "str:MOA-abcdef": {
+                            "instances": [
+                                {
+                                    "nonce": "",
+                                    "balance": "1"
+                                }
+                            ],
+                            "roles": [
+                                "DCTRoleLocalMint",
+                                "DCTRoleLocalBurn"
+                            ]
+                        }
+                    },
+                    "storage": {
+                        "str:wrappedMoaTokenId": "str:MOA-abcdef"
+                    },
+                    "code": "file:../output/dharitri-sc-wmoa-swap.wasm"
+                }
+            }
+        }
+    ]
+}

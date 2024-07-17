@@ -1,0 +1,437 @@
+{
+    "buildInfo": {
+        "rustc": {
+            "version": "x.x.x-nightly",
+            "commitHash": "<commit hash here>",
+            "commitDate": "<commit date here>",
+            "channel": "Channel",
+            "short": "rustc <version> (<short hash> <date>)"
+        },
+        "contractCrate": {
+            "name": "use-module",
+            "version": "0.0.0",
+            "gitVersion": "<git version here>"
+        },
+        "framework": {
+            "name": "dharitri-wasm",
+            "version": "0.10.8"
+        }
+    },
+    "docs": [
+        "Contract that tests that using modules works correctly.",
+        "Also provides testing for the most common modules:",
+        "- DnsModule",
+        "- FeaturesModule",
+        "- DctModule",
+        "- GovernanceModule",
+        "- PauseModule"
+    ],
+    "name": "UseModule",
+    "constructor": {
+        "docs": [
+            "The external view init prepares a contract that looks in another contract's storage.",
+            "It takes a single argument, the other contract's address",
+            "You won't find this constructors' definition in the contract, it gets injected automatically by the framework. See `dharitri_wasm::external_view_contract`."
+        ],
+        "inputs": [
+            {
+                "name": "target_contract_address",
+                "type": "Address"
+            }
+        ],
+        "outputs": []
+    },
+    "endpoints": [
+        {
+            "name": "external_view_mod_a",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [],
+            "labels": [
+                "module-external-view"
+            ]
+        },
+        {
+            "name": "external_view_mod_b",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [],
+            "labels": [
+                "module-external-view"
+            ]
+        }
+    ],
+    "events": [
+        {
+            "identifier": "eventInModule",
+            "inputs": [
+                {
+                    "name": "arg",
+                    "type": "u32",
+                    "indexed": true
+                }
+            ]
+        },
+        {
+            "identifier": "proposalCreated",
+            "inputs": [
+                {
+                    "name": "proposal_id",
+                    "type": "u32",
+                    "indexed": true
+                },
+                {
+                    "name": "proposer",
+                    "type": "Address",
+                    "indexed": true
+                },
+                {
+                    "name": "start_block",
+                    "type": "u64",
+                    "indexed": true
+                },
+                {
+                    "name": "proposal",
+                    "type": "GovernanceProposal"
+                }
+            ]
+        },
+        {
+            "identifier": "upVoteCast",
+            "inputs": [
+                {
+                    "name": "up_voter",
+                    "type": "Address",
+                    "indexed": true
+                },
+                {
+                    "name": "proposal_id",
+                    "type": "u32",
+                    "indexed": true
+                },
+                {
+                    "name": "nr_votes",
+                    "type": "BigUint"
+                }
+            ]
+        },
+        {
+            "identifier": "downVoteCast",
+            "inputs": [
+                {
+                    "name": "down_voter",
+                    "type": "Address",
+                    "indexed": true
+                },
+                {
+                    "name": "proposal_id",
+                    "type": "u32",
+                    "indexed": true
+                },
+                {
+                    "name": "nr_downvotes",
+                    "type": "BigUint"
+                }
+            ]
+        },
+        {
+            "identifier": "downVetoVoteCast",
+            "inputs": [
+                {
+                    "name": "down_veto_voter",
+                    "type": "Address",
+                    "indexed": true
+                },
+                {
+                    "name": "proposal_id",
+                    "type": "u32",
+                    "indexed": true
+                },
+                {
+                    "name": "nr_downvotes",
+                    "type": "BigUint"
+                }
+            ]
+        },
+        {
+            "identifier": "abstainVoteCast",
+            "inputs": [
+                {
+                    "name": "abstain_voter",
+                    "type": "Address",
+                    "indexed": true
+                },
+                {
+                    "name": "proposal_id",
+                    "type": "u32",
+                    "indexed": true
+                },
+                {
+                    "name": "nr_downvotes",
+                    "type": "BigUint"
+                }
+            ]
+        },
+        {
+            "identifier": "proposalCanceled",
+            "inputs": [
+                {
+                    "name": "proposal_id",
+                    "type": "u32",
+                    "indexed": true
+                }
+            ]
+        },
+        {
+            "identifier": "proposalQueued",
+            "inputs": [
+                {
+                    "name": "proposal_id",
+                    "type": "u32",
+                    "indexed": true
+                },
+                {
+                    "name": "queued_block",
+                    "type": "u64",
+                    "indexed": true
+                }
+            ]
+        },
+        {
+            "identifier": "proposalExecuted",
+            "inputs": [
+                {
+                    "name": "proposal_id",
+                    "type": "u32",
+                    "indexed": true
+                }
+            ]
+        },
+        {
+            "identifier": "userDeposit",
+            "inputs": [
+                {
+                    "name": "address",
+                    "type": "Address",
+                    "indexed": true
+                },
+                {
+                    "name": "proposal_id",
+                    "type": "u32",
+                    "indexed": true
+                },
+                {
+                    "name": "payment",
+                    "type": "DctTokenPayment"
+                }
+            ]
+        },
+        {
+            "identifier": "userClaimDepositedTokens",
+            "inputs": [
+                {
+                    "name": "address",
+                    "type": "Address",
+                    "indexed": true
+                },
+                {
+                    "name": "proposal_id",
+                    "type": "u32",
+                    "indexed": true
+                },
+                {
+                    "name": "payment",
+                    "type": "DctTokenPayment"
+                }
+            ]
+        }
+    ],
+    "hasCallback": false,
+    "types": {
+        "DctTokenPayment": {
+            "type": "struct",
+            "fields": [
+                {
+                    "name": "token_identifier",
+                    "type": "TokenIdentifier"
+                },
+                {
+                    "name": "token_nonce",
+                    "type": "u64"
+                },
+                {
+                    "name": "amount",
+                    "type": "BigUint"
+                }
+            ]
+        },
+        "DctTokenType": {
+            "type": "enum",
+            "variants": [
+                {
+                    "name": "Fungible",
+                    "discriminant": 0
+                },
+                {
+                    "name": "NonFungible",
+                    "discriminant": 1
+                },
+                {
+                    "name": "SemiFungible",
+                    "discriminant": 2
+                },
+                {
+                    "name": "Meta",
+                    "discriminant": 3
+                },
+                {
+                    "name": "Invalid",
+                    "discriminant": 4
+                }
+            ]
+        },
+        "FeeEntry": {
+            "type": "struct",
+            "fields": [
+                {
+                    "name": "depositor_addr",
+                    "type": "Address"
+                },
+                {
+                    "name": "tokens",
+                    "type": "DctTokenPayment"
+                }
+            ]
+        },
+        "GovernanceAction": {
+            "type": "struct",
+            "fields": [
+                {
+                    "name": "gas_limit",
+                    "type": "u64"
+                },
+                {
+                    "name": "dest_address",
+                    "type": "Address"
+                },
+                {
+                    "name": "function_name",
+                    "type": "bytes"
+                },
+                {
+                    "name": "arguments",
+                    "type": "List<bytes>"
+                }
+            ]
+        },
+        "GovernanceProposal": {
+            "type": "struct",
+            "fields": [
+                {
+                    "name": "proposer",
+                    "type": "Address"
+                },
+                {
+                    "name": "actions",
+                    "type": "List<GovernanceAction>"
+                },
+                {
+                    "name": "description",
+                    "type": "bytes"
+                },
+                {
+                    "name": "fees",
+                    "type": "ProposalFees"
+                }
+            ]
+        },
+        "GovernanceProposalStatus": {
+            "type": "enum",
+            "variants": [
+                {
+                    "name": "None",
+                    "discriminant": 0
+                },
+                {
+                    "name": "Pending",
+                    "discriminant": 1
+                },
+                {
+                    "name": "Active",
+                    "discriminant": 2
+                },
+                {
+                    "name": "Defeated",
+                    "discriminant": 3
+                },
+                {
+                    "name": "Succeeded",
+                    "discriminant": 4
+                },
+                {
+                    "name": "Queued",
+                    "discriminant": 5
+                },
+                {
+                    "name": "WaitingForFees",
+                    "discriminant": 6
+                }
+            ]
+        },
+        "ProposalFees": {
+            "type": "struct",
+            "fields": [
+                {
+                    "name": "total_amount",
+                    "type": "BigUint"
+                },
+                {
+                    "name": "entries",
+                    "type": "List<FeeEntry>"
+                }
+            ]
+        },
+        "ProposalVotes": {
+            "type": "struct",
+            "fields": [
+                {
+                    "name": "up_votes",
+                    "type": "BigUint"
+                },
+                {
+                    "name": "down_votes",
+                    "type": "BigUint"
+                },
+                {
+                    "name": "down_veto_votes",
+                    "type": "BigUint"
+                },
+                {
+                    "name": "abstain_votes",
+                    "type": "BigUint"
+                }
+            ]
+        },
+        "VoteType": {
+            "type": "enum",
+            "variants": [
+                {
+                    "name": "UpVote",
+                    "discriminant": 0
+                },
+                {
+                    "name": "DownVote",
+                    "discriminant": 1
+                },
+                {
+                    "name": "DownVetoVote",
+                    "discriminant": 2
+                },
+                {
+                    "name": "AbstainVote",
+                    "discriminant": 3
+                }
+            ]
+        }
+    }
+}

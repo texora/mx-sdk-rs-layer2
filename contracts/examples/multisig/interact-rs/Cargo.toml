@@ -1,0 +1,21 @@
+[package]
+name = "multisig-interact"
+version = "0.0.0"
+authors = ["Andrei Marinica <andrei.marinica@dharitri.com>"]
+edition = "2021"
+publish = false
+
+[[bin]]
+name = "multisig-interact"
+path = "src/multisig_interact.rs"
+
+[dependencies.multisig]
+path = ".."
+
+[dependencies.dharitri-wasm-modules]
+version = "0.10.8"
+path = "../../../../dharitri-wasm-modules"
+
+[dependencies.dharitri-interact-snippets]
+version = "0.10.8"
+path = "../../../../dharitri-interact-snippets"

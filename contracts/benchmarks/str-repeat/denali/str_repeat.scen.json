@@ -1,0 +1,133 @@
+{
+    "name": "str-repeat",
+    "steps": [
+        {
+            "step": "setState",
+            "accounts": {
+                "address:owner": {
+                    "nonce": "0",
+                    "balance": "0"
+                }
+            },
+            "newAddresses": [
+                {
+                    "creatorAddress": "address:owner",
+                    "creatorNonce": "0",
+                    "newAddress": "sc:contract"
+                }
+            ]
+        },
+        {
+            "step": "scDeploy",
+            "id": "deploy",
+            "tx": {
+                "from": "address:owner",
+                "contractCode": "file:../output/str-repeat.wasm",
+                "arguments": [],
+                "gasLimit": "2,000,000",
+                "gasPrice": "0"
+            },
+            "expect": {
+                "out": [],
+                "status": "",
+                "logs": [],
+                "gas": "*",
+                "refund": "*"
+            }
+        },
+        {
+            "step": "scCall",
+            "id": "append-abc-3-times",
+            "tx": {
+                "from": "address:owner",
+                "to": "sc:contract",
+                "function": "repeat",
+                "arguments": [
+                    "str:abc",
+                    "3"
+                ],
+                "gasLimit": "4,000,000",
+                "gasPrice": "0"
+            },
+            "expect": {
+                "out": [],
+                "status": "",
+                "logs": [],
+                "gas": "*",
+                "refund": "*"
+            }
+        },
+        {
+            "step": "scCall",
+            "id": "append-abc-0-times",
+            "tx": {
+                "from": "address:owner",
+                "to": "sc:contract",
+                "function": "repeat",
+                "arguments": [
+                    "str:abc",
+                    "0"
+                ],
+                "gasLimit": "3,000,000",
+                "gasPrice": "0"
+            },
+            "expect": {
+                "out": [],
+                "status": "",
+                "logs": [],
+                "gas": "*",
+                "refund": "*"
+            }
+        },
+        {
+            "step": "checkState",
+            "accounts": {
+                "sc:contract": {
+                    "nonce": "0",
+                    "balance": "0",
+                    "storage": {
+                        "str:byteArray": "str:abcabcabc"
+                    },
+                    "code": "*"
+                },
+                "+": ""
+            }
+        },
+        {
+            "step": "scCall",
+            "id": "append-whitespace",
+            "tx": {
+                "from": "address:owner",
+                "to": "sc:contract",
+                "function": "repeat",
+                "arguments": [
+                    "",
+                    "1000"
+                ],
+                "gasLimit": "4,000,000",
+                "gasPrice": "0"
+            },
+            "expect": {
+                "out": [],
+                "status": "",
+                "logs": [],
+                "gas": "*",
+                "refund": "*"
+            }
+        },
+        {
+            "step": "checkState",
+            "accounts": {
+                "sc:contract": {
+                    "nonce": "0",
+                    "balance": "0",
+                    "storage": {
+                        "str:byteArray": "str:abcabcabc"
+                    },
+                    "code": "*"
+                },
+                "+": ""
+            }
+        }
+    ]
+}

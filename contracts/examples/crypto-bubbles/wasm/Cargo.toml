@@ -1,0 +1,31 @@
+[package]
+name = "crypto-bubbles-wasm"
+version = "0.0.0"
+authors = ["Andrei Marinica <andrei.marinica@dharitri.com>"]
+edition = "2021"
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+
+[profile.release]
+codegen-units = 1
+opt-level = "z"
+lto = true
+debug = false
+panic = "abort"
+
+[dependencies.crypto-bubbles]
+path = ".."
+
+[dependencies.dharitri-wasm-node]
+version = "0.10.8"
+path = "../../../../dharitri-wasm-node"
+
+[dependencies.dharitri-wasm-output]
+version = "0.10.8"
+path = "../../../../dharitri-wasm-output"
+features = ["wasm-output-mode"]
+
+[workspace]
+members = ["."]

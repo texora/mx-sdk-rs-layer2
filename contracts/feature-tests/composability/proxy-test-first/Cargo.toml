@@ -1,0 +1,29 @@
+[package]
+name = "proxy-test-first"
+version = "0.0.0"
+authors = ["Andrei Marinica <andrei.marinica@dharitri.com>"]
+edition = "2021"
+publish = false
+
+[lib]
+path = "src/proxy-test-first.rs"
+
+[features]
+ei-unmanaged = ["dharitri-wasm/ei-unmanaged"]
+
+[dependencies]
+hex-literal = "0.3.1"
+
+[dependencies.dharitri-wasm]
+version = "0.10.8"
+path = "../../../../dharitri-wasm"
+features = ["alloc"]
+
+[dependencies.dharitri-wasm-node]
+version = "0.10.8"
+path = "../../../../dharitri-wasm-node"
+optional = true
+
+[dev-dependencies.dharitri-wasm-debug]
+version = "0.10.8"
+path = "../../../../dharitri-wasm-debug"

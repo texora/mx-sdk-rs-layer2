@@ -1,0 +1,22 @@
+[package]
+name = "crowdfunding-dct"
+version = "0.0.0"
+authors = ["Dorin Iancu <dorin.iancu@dharitri.com>"]
+edition = "2021"
+publish = false
+
+[lib]
+path = "src/crowdfunding_dct.rs"
+
+[dependencies.dharitri-wasm]
+version = "0.10.8"
+path = "../../../dharitri-wasm"
+
+[dev-dependencies.dharitri-wasm-debug]
+version = "0.10.8"
+path = "../../../dharitri-wasm-debug"
+
+[dev-dependencies]
+num-bigint = "0.4.2"
+num-traits = "0.2"
+hex = "0.4"

@@ -1,0 +1,12 @@
+[package]
+name = "panic-message-features-meta"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[dependencies.panic-message-features]
+path = ".."
+
+[dependencies.dharitri-wasm-debug]
+version = "0.10.8"
+path = "../../../../dharitri-wasm-debug"
