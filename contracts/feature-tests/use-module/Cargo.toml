@@ -9,14 +9,14 @@ publish = false
 path = "src/use_module.rs"
 
 [dependencies.dharitri-wasm-modules]
-version = "0.10.8"
+version = "0.38.0"
 path = "../../../dharitri-wasm-modules"
 
 [dependencies.dharitri-wasm]
-version = "0.10.8"
+version = "0.38.0"
 path = "../../../dharitri-wasm"
 features = [ "alloc" ]
 
 [dev-dependencies.dharitri-wasm-debug]
-version = "0.10.8"
+version = "0.38.0"
 path = "../../../dharitri-wasm-debug"

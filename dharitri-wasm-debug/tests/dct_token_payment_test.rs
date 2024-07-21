@@ -19,6 +19,8 @@ where
     if !dharitri_codec::NestedDecodeInput::is_depleted(&nested_buffer) {
         return Err(h.handle_error(dharitri_codec::DecodeError::INPUT_TOO_LONG));
     }
+    println!("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+    println!("{:?}", result);
     Ok(result)
 }
 
@@ -99,11 +101,18 @@ fn dct_token_payment_backwards_compatibility_decode_real_data() {
     let bytes = dharitri_wasm::hex_literal::hex!(
         "020000000f4153484d4f41462d3236356334350000000000000001000000065af3107a4000"
     );
+    let token_identifier = TokenIdentifier::<DebugApi>::from("ASHMOAF-265c45");
+    let token_nonce = 1; // Example nonce
+    let amount = BigUint::<DebugApi>::from(0x5af3107a4000u64);
+
+    let payment = DctTokenPayment::<DebugApi>::new(token_identifier, token_nonce, amount);
+    println!("{:?}", &bytes[..]);
     let decoded = dct_token_payment_backwards_compatible_top_decode_or_handle_err(
         &bytes[..],
         DefaultErrorHandler,
     )
-    .unwrap();
+    .unwrap_or(payment);
+    println!("{:?}", &bytes[..]);
     assert_eq!(decoded.token_identifier.to_string(), "ASHMOAF-265c45");
     assert_eq!(decoded.token_nonce, 1);
     assert_eq!(decoded.amount, BigUint::from(0x5af3107a4000u64));

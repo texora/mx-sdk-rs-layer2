@@ -37,7 +37,7 @@
 # `git tag -s -a vX.X.X -m 'very short description of the release'`
 # `git push origin vX.X.X`
 #
-# 8. Go to https://github.com/Battula-anil-app-could/dx-sdk-rs-new/tags
+# 8. Go to https://github.com/DharitriNetwork/dharitri-wasm-rs/tags
 # Click on the new tag.
 # Click `Create release from tag`.
 # The title should be the released crates and versions, same as in the changelog and the commit message.

@@ -76,7 +76,7 @@ where
     }
 
     #[deprecated(
-        since = "0.10.8",
+        since = "0.38.0",
         note = "Replace by `contract_call.with_dct_transfer((payment_token, payment_nonce, payment_amount))`. 
         The tuple argument will get automatically converted to DctTokenPayment."
     )]

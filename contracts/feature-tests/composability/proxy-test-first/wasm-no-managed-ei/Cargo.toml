@@ -20,12 +20,12 @@ path = ".."
 features = ["ei-unmanaged"]
 
 [dependencies.dharitri-wasm-node]
-version = "0.10.8"
+version = "0.38.0"
 path = "../../../../../dharitri-wasm-node"
 features = ["ei-unmanaged-node"]
 
 [dependencies.dharitri-wasm-output]
-version = "0.10.8"
+version = "0.38.0"
 path = "../../../../../dharitri-wasm-output"
 features = ["wasm-output-mode"]
 

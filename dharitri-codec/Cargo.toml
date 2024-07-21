@@ -1,12 +1,12 @@
 [package]
 name = "dharitri-codec"
-version = "0.4.1"
+version = "0.16.0"
 edition = "2021"
 
 authors = ["Andrei Marinica <andrei.marinica@dharitri.com>", "Dharitri Network <contact@dharitri.com>"]
 license = "GPL-3.0-only"
 readme = "README.md"
-repository = "https://github.com/Battula-anil-app-could/dx-sdk-rs-new"
+repository = "https://github.com/DharitriNetwork/dharitri-wasm-rs"
 homepage = "https://dharitri.com/"
 documentation = "https://docs.dharitri.com/"
 description = "Lightweight binary serializer/deserializer, written especially for Dharitri smart contracts"
@@ -19,7 +19,7 @@ alloc = []
 
 [dependencies.dharitri-codec-derive]
 path = "../dharitri-codec-derive"
-version = "=0.4.1"
+version = "=0.16.0"
 optional = true
 
 [dependencies]
@@ -29,4 +29,4 @@ num-bigint = { version = "0.4.2", optional = true } # can only be used in std co
 
 [dev-dependencies.dharitri-codec-derive]
 path = "../dharitri-codec-derive"
-version = "=0.4.1"
+version = "=0.16.0"

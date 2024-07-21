@@ -101,7 +101,7 @@ where
     }
 
     #[deprecated(
-        since = "0.10.8",
+        since = "0.38.0",
         note = "Replace by `contract_call.with_dct_transfer((payment_token, payment_nonce, payment_amount))`. 
         The tuple argument will get automatically converted to DctTokenPayment."
     )]
@@ -138,7 +138,7 @@ where
     }
 
     #[deprecated(
-        since = "0.10.8",
+        since = "0.38.0",
         note = "Replace by `contract_call.with_moa_or_single_dct_transfer((payment_token, payment_nonce, payment_amount))`. "
     )]
     pub fn with_moa_or_single_dct_token_transfer(

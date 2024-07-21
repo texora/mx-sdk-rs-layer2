@@ -1,12 +1,12 @@
 [package]
 name = "dharitri-wasm-derive"
-version = "0.10.8"
+version = "0.38.0"
 edition = "2021"
 
 authors = ["Andrei Marinica <andrei.marinica@dharitri.com>", "Dharitri Network <contact@dharitri.com>"]
 license = "GPL-3.0-only"
 readme = "README.md"
-repository = "https://github.com/Battula-anil-app-could/dx-sdk-rs-new"
+repository = "https://github.com/DharitriNetwork/dharitri-wasm-rs"
 homepage = "https://dharitri.com/"
 documentation = "https://docs.dharitri.com/"
 description = "Dharitri WebAssembly smart contract API procedural macros"
