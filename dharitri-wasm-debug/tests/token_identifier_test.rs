@@ -23,7 +23,7 @@ fn test_codec() {
     );
 
     let expected = BoxedBytes::from_concat(&[
-        &[0, 0, 0, 4],
+        &[0, 0, 0, 3],
         &MoaOrDctTokenIdentifier::<DebugApi>::MOA_REPRESENTATION[..],
     ]);
     check_managed_top_encode_decode(
